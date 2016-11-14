@@ -1,0 +1,31 @@
+{
+  "name": "team-up",
+  "version": "1.0.0",
+  "description": "Team Up app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJ-xyz/team-up.git"
+  },
+  "author": "JJ_xyz@iCloud.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JJ-xyz/team-up/issues"
+  },
+  "homepage": "https://github.com/JJ-xyz/team-up#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "mongoose": "^4.6.7",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "pryjs": "^1.0.3"
+  }
+}
