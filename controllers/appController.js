@@ -62,6 +62,19 @@ router.post('/', function(req, res){
 });
 
 
+// --- ROUTE :: DESTROY :: Delete Project---
+router.delete('/:pId', function(req, res){
+  ProjectModel.remove({_id : req.params.pId})
+  .then(function(oneProject) {
+    console.log(oneProject,"<<<<<<onePorjectDelete");
+    res.json(oneProject);
+  })
+  .catch(function(err) {
+  res.json(500, "cant read Database");
+  })
+});
+
+
 
 
 // //*-----------------------------------------------------*

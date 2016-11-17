@@ -12,6 +12,7 @@
     self.projectUpdate = projectUpdate;
     self.projectNew = projectNew;
     self.projectCreate = projectCreate;
+    self.projectDelete = projectDelete;
     self.partialTitle = ''
     self.enote = '';
 
@@ -93,6 +94,23 @@
       .catch((err) => { console.log(err) });
     }
 
+    // --- project delete
+    function projectDelete(i){
+      console.log("apiARGUMENT-projectDelete", self.projectList[i]._id);
+      $http({
+        method: 'DELETE',
+        url: `projects/${self.projectList[i]._id}`,
+        data: {},
+        responseType: 'json'
+      })
+      .then(function(response){
+        console.log("apiRESPONSE-projectDelete", response.data);
+
+        self.projectList.splice(i,1)
+        $state.go('home');
+      })
+      .catch((err) => { console.log(err) });
+    }
 
 
 
