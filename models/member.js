@@ -7,7 +7,7 @@ var ObjectId = Schema.ObjectId;
 // --- Member Schema ---
 var MemberSchema = new Schema({
   name: String,
-  skillSet: String,
+  skillSet: [String],
   emailContact: String,
   slackContact: String,
   location: String

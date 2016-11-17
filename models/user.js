@@ -9,8 +9,8 @@ var ObjectId = Schema.ObjectId;
 var UserSchema = new Schema({
   username: String,
   password: String,
-  fullname: String;
-  email: String;
+  fullname: String,
+  email: String,
   location: String,
   skillSet: String,
   slackContact: String,

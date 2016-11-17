@@ -6,10 +6,11 @@ app.use(express.static(__dirname + '/public'));
 
 // --- Handlers ---
 var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
 app.use(bodyParser.json());
+// var methodOverride = require('method-override');
+// app.use(methodOverride('_method'));
+
 // --- debuggin tools ---
 pry = require('pryjs');
 var logger = require('morgan');
@@ -23,16 +24,19 @@ app.use(logger('dev'));
 
 // --- Database : Mongo DB ---
 var mongoose = require('mongoose');
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/magazine';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/team-up';
 mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', function(err){ console.log(err); });
 db.once('open', function(){ console.log('[ XYZ ] Connected to Mongo DB'); });
 
-// --- Midleware : Passport ---
+// --- Data Models Loading ---
 var UserModel = require('./models/user.js');
+var ProjectModel = require('./models/project.js');
+var MemberModel = require('./models/member.js');
 
+// --- Midleware : Passport ---  *** for second pass review ****
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -49,9 +53,13 @@ passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
 // --- Main Routes ---
-app.use('/', require('./controllers/home.js'));
-app.use('/project', require('./controllers/project.js'));
-app.use('/member', require('./controllers/member.js'));
-app.use('/sec', require('./controllers/sec.js'));
+app.get('/', function(req, res){
+    res.render('index');
+});
+// app.use('/', require('./controllers/home.js'));
+app.use('/projects', require('./controllers/appController.js'));
+// app.use('/member', require('./controllers/member.js'));
+// app.use('/sec', require('./controllers/sec.js'));
+app.use('/seed', require('./seed/data-init.js'))
 
 app.listen(process.env.PORT || 3001);

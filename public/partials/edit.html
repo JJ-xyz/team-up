@@ -1,0 +1,38 @@
+<div class="x-entry">
+  <h4>Edit Details</h4>
+
+  <form ng-submit="api.projectUpdate(api.oneProject)">
+
+    <div>
+      <label for="name">project</label>
+      <input type="text" ng-model="api.oneProject.name" required>
+    </div>
+
+    <div>
+      <label for="description">description</label>
+      <input type="textarea" ng-model="api.oneProject.description" required>
+    </div>
+
+    <div>
+      <label for="skillsRequired">skills required</label>
+      <input type="text" ng-model="api.oneProject.skillsRequired" required>
+    </div>
+
+    <div>
+      <label for="dateStart">date start</label>
+      <input type="text" ng-model="api.oneProject.dateStart" required>
+    </div>
+
+    <div>
+      <label for="dateEnd">date end</label>
+      <input type="text" ng-model="api.oneProject.dateEnd" required>
+    </div>
+
+    <div>
+      <label for="baseLocation">base location</label>
+      <input type="text" ng-model="api.oneProject.baseLocation" required>
+    </div>
+
+    <button class="x-btn x-btn-add" type="submit">Go</button><span> {{api.enote}}</span>
+  </form>
+</div>
