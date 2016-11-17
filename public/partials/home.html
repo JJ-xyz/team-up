@@ -3,16 +3,16 @@
 
   <ul>
     <span> _______ ID | Complete? | TASK  | ASSIGNED TO | DESCRIPTION  | ASSIGNED BY | DUE DATE | COMPLETED ON | </span>
-    <li ng-repeat="p in api.projectList" >
+    <li ng-repeat="p in api.projectList track by $index" >
       <button class="x-btn x-btn-add" ng-click="api.deleteOneProject($index)">remove</button>
-      <span ng-click="api.projectEdit($index)"> P{{$index}} | {{p._id}} | {{p.name}} | {{ p.description }} | {{p.skillsRequired.join}} | {{ p.dateStart.slice(0,10) }} | {{p.dateEnd}} | {{task.baseLocation}}</span>
+      <span ng-click="api.projectEdit($index)"> P{{$index}} | {{p._id}} | {{p.name}} | {{ p.description }} | {{p.skillsRequired.join}} | {{ p.dateStart.slice(0,10) }} | {{p.dateEnd}} | {{p.baseLocation}}</span>
       <div ng-repeat="who in p.memberList">
         <button class="x-btn x-btn-add" ng-click="api.deleteOneMember($index)">remove</button>
         <span> ------- {{$index}} of {{$parent.$index}} | [{{who.name}}] slack:{{who.emailContact}} from {{who.location}}<span>
       </div>
       <button class="x-btn x-btn-add" ng-click="api.newMember()">new member</button>
     </li>
-    <button class="x-btn x-btn-add" ng-click="api.newProject()">new project</button>
+    <button class="x-btn x-btn-add" ng-click="api.projectNew()">new project</button>
   </ul>
 
 </div>

@@ -9,6 +9,9 @@
 
     self.getAllProjects = getAllProjects;
     self.projectEdit = projectEdit;
+    self.projectUpdate = projectUpdate;
+    self.projectNew = projectNew;
+    self.projectCreate = projectCreate;
     self.partialTitle = ''
     self.enote = '';
 
@@ -39,28 +42,56 @@
       })
       .then(function(response){
         console.log("apiRESPONSE-projectEdit", response.data);
-
-        console.log("Dates-------------------------Begin");
-        var oneDate = new Date(response.data.dateStart);
-        response.data.dateStart = oneDate.toLocaleDateString('en-US');
-        console.log(oneDate);
-        console.log(oneDate.toLocaleDateString('en-US'));
-        console.log(response.data.dateStart);
-
-
-
-
-        console.log("Dates---------------------------End");
         self.oneProject = response.data;
+        self.oneIndex = i;
         $state.go('edit');
       })
       .catch((err) => { console.log(err) });
     }
 
+    // --- project Update
+    function projectUpdate(oneProject){
+      console.log("apiARGUMENT-projectUpdate", oneProject);
+      $http({
+        method: 'PUT',
+        url: `projects/${self.projectList[self.oneIndex]._id}`,
+        data: {oneProject},
+        responseType: 'json'
+      })
+      .then(function(response){
+        console.log("apiRESPONSE-projectUpdate", response.data);
+        //self.oneProject = response.data;
+        //self.projectList[self.oneIndex] = response.data;
+        self.projectList[self.oneIndex] = oneProject;
+        $state.go('home');
+      })
+      .catch((err) => { console.log(err) });
+    }
 
+    // --- project New
+    function projectNew(){
+      self.oneProject = '';
+      $state.go('new');
+    }
 
-
-
+    // --- project Create
+    function projectCreate(oneProject){
+      console.log("apiARGUMENT-projectNew", oneProject);
+      $http({
+        method: 'POST',
+        url: `projects/`,
+        data: {oneProject},
+        responseType: 'json'
+      })
+      .then(function(response){
+        console.log("apiRESPONSE-projectNew", response.data);
+        //self.oneProject = response.data;
+        //self.projectList[self.oneIndex] = response.data;
+        self.projectList.push(response.data);
+        $state.go('home');
+      })
+      .catch((err) => { console.log(err) });
+    }
 
 
 
@@ -235,6 +266,6 @@
     //   })
     //   .catch((err) => { console.log(err) });
     //
-    // }
+  }
 
 })()

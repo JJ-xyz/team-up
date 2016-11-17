@@ -32,6 +32,35 @@ router.get('/:pId/edit', function(req, res){
   })
 });
 
+// --- ROUTE :: UPDATE :: Put/Update a project
+router.put('/:pId', function(req, res){
+  console.log(req.params.pId, "<<<<<<to be update");
+  console.log(req.body.name, "<<<<<<to be update");
+
+  ProjectModel.findOneAndUpdate({_id : req.params.pId}, req.body).exec()
+  .then(function(oneProject){
+    console.log(oneProject,"<<<<<<onePorjectUpdated");
+    res.json(oneProject);
+  })
+  .catch(function(err) {
+  res.json(500, "cant read Database");
+  })
+});
+
+
+// --- ROUTE :: CREATE :: Create new record from NEW ---
+router.post('/', function(req, res){
+  console.log(req.body.oneProject, "<<<<<<to be created");
+  ProjectModel.create(req.body.oneProject)
+  .then(function(oneProject){
+    console.log(oneProject,"<<<<<<onePorjectCreate");
+    res.json(oneProject);
+  })
+  .catch(function(err) {
+  res.json(500, "cant read Database");
+  })
+});
+
 
 
 
