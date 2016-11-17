@@ -13,6 +13,11 @@
     self.projectNew = projectNew;
     self.projectCreate = projectCreate;
     self.projectDelete = projectDelete;
+    self.memberNew = memberNew;
+    self.memberAdd = memberAdd;
+    self.memberEdit = memberEdit;
+    self.memberUpdate = memberUpdate;
+    self.memberDelete = memberDelete;
     self.partialTitle = ''
     self.enote = '';
 
@@ -112,13 +117,52 @@
       .catch((err) => { console.log(err) });
     }
 
+    // --- member ADD
+    function memberNew(i){
+      console.log("apiARGUMENT-memberNew", self.projectList[i]);
+      self.oneIndex = i;
+      self.oneProject = self.projectList[i];
+      self.oneMember = '';
+      $state.go('member');
+    }
 
+    // --- project Update + member ADD
+    function memberAdd(oneMember){
+      console.log("apiARGUMENT-memberAdd", oneMember);
+      self.projectList[self.oneIndex].memberList.push(oneMember);
+      console.log("------------------for", self.projectList[self.oneIndex]);
+      projectUpdate(self.projectList[self.oneIndex]);
+      $state.go('home');
+    }
 
+    // --- member EDIT
+    function memberEdit(i,j){
+      console.log("apiARGUMENT-memberEdit", self.projectList[i]);
+      self.oneIndex = i;
+      self.innerIndex = j;
+      self.oneProject = self.projectList[i];
+      self.oneMember = self.projectList[i].memberList[j];
+      $state.go('memberedit');
+    }
 
-
-
-
-
+    // --- project Update + member EDIT
+    function memberUpdate(oneMember){
+      console.log("apiARGUMENT-memberUpdate", oneMember);
+      self.projectList[self.oneIndex].memberList[self.innerIndex] = oneMember;
+      console.log("------------------for", self.projectList[self.oneIndex]);
+      projectUpdate(self.projectList[self.oneIndex]);
+      $state.go('home');
+    }
+    // --- project Update + member DELETE
+    function memberDelete(i,j){
+      console.log("apiARGUMENT-memberDelete", self.projectList[i].memberList[j]);
+      console.log("apiARGUMENT----------for", self.projectList[i]);
+      self.projectList[i].memberList.splice(j,1);
+      self.oneIndex = i;
+      console.log("-------------------as", self.projectList[j]);
+      projectUpdate(self.projectList[i]);
+      $state.go('home');
+    }
 
 
 

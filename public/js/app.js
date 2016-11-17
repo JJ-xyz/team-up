@@ -18,6 +18,14 @@
       .state('edit', {
         url: "/edit",
         templateUrl: "partials/edit.html",
+      })
+      .state('member', {
+        url: "/member",
+        templateUrl: "partials/member.html",
+      })
+      .state('memberedit', {
+        url: "/memberedit",
+        templateUrl: "partials/memberedit.html",
       });
 
     $urlRouterProvider.otherwise('/');

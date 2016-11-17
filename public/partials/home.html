@@ -6,11 +6,11 @@
     <li ng-repeat="p in api.projectList track by $index" >
       <button class="x-btn x-btn-add" ng-click="api.projectDelete($index)">remove</button>
       <span ng-click="api.projectEdit($index)"> P{{$index}} | {{p._id}} | {{p.name}} | {{ p.description }} | {{p.skillsRequired.join}} | {{ p.dateStart.slice(0,10) }} | {{p.dateEnd}} | {{p.baseLocation}}</span>
-      <div ng-repeat="who in p.memberList">
-        <button class="x-btn x-btn-add" ng-click="api.deleteOneMember($index)">remove</button>
-        <span> ------- {{$index}} of {{$parent.$index}} | [{{who.name}}] slack:{{who.emailContact}} from {{who.location}}<span>
+      <div ng-repeat="who in p.memberList track by $index">
+        <button class="x-btn x-btn-add" ng-click="api.memberDelete($parent.$index,$index)">remove</button>
+        <span ng-click="api.memberEdit($parent.$index, $index)"> ------- {{$index}} of {{$parent.$index}} | [{{who.name}}] email:{{who.emailContact}} from {{who.location}}<span>
       </div>
-      <button class="x-btn x-btn-add" ng-click="api.newMember()">new member</button>
+      <button class="x-btn x-btn-add" ng-click="api.memberNew($index)">new member</button>
     </li>
     <button class="x-btn x-btn-add" ng-click="api.projectNew()">new project</button>
   </ul>

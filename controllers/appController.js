@@ -34,10 +34,10 @@ router.get('/:pId/edit', function(req, res){
 
 // --- ROUTE :: UPDATE :: Put/Update a project
 router.put('/:pId', function(req, res){
-  console.log(req.params.pId, "<<<<<<to be update");
-  console.log(req.body.name, "<<<<<<to be update");
+  console.log(req.params.pId, "<<<<<<id to be update");
+  console.log(req.body, "<<<<<<name to be update");
 
-  ProjectModel.findOneAndUpdate({_id : req.params.pId}, req.body).exec()
+  ProjectModel.findOneAndUpdate({_id : req.params.pId}, req.body.oneProject).exec()
   .then(function(oneProject){
     console.log(oneProject,"<<<<<<onePorjectUpdated");
     res.json(oneProject);

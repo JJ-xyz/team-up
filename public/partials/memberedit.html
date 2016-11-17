@@ -1,0 +1,34 @@
+<div class="x-entry">
+  <h4>Project {{api.oneProject.name}}</h4>
+  <h3>Member Detail</h3>
+
+  <form ng-submit="api.memberUpdate(api.oneMember)">
+
+    <div>
+      <label for="name">Name</label>
+      <input type="text" ng-model="api.oneMember.name" required>
+    </div>
+
+    <div>
+      <label for="emailContact">email</label>
+      <input type="text" ng-model="api.oneMember.emailContact" required>
+    </div>
+
+    <div>
+      <label for="slackContact">Slack</label>
+      <input type="text" ng-model="api.oneMember.slackContact" required>
+    </div>
+
+    <div>
+      <label for="skillSet">skills</label>
+      <input type="text" ng-model="api.oneMember.skillSet" required>
+    </div>
+
+    <div>
+      <label for="location">Location</label>
+      <input type="text" ng-model="api.oneMember.location" >
+    </div>
+
+    <button class="x-btn x-btn-add" type="submit">Go</button><span> {{api.enote}}</span>
+  </form>
+</div>
