@@ -18,24 +18,7 @@
       .state('edit', {
         url: "/edit",
         templateUrl: "partials/edit.html",
-      })
-      .state('login', {
-        url: "/login",
-        templateUrl: "partials/login.html",
-      })
-      .state('profile', {
-        url: "/profile",
-        templateUrl: "partials/profile.html",
-      })
-      .state('signup', {
-        url: "/signup",
-        templateUrl: "partials/signup.html",
-      })
-      .state('logout', {
-        url: "/",
-        templateUrl: "partials/login.html",
       });
-
 
     $urlRouterProvider.otherwise('/');
 
