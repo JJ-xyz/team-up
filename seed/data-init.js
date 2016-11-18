@@ -53,19 +53,19 @@ router.get('/reset', function(req, res){
   .then(function(){
     console.log('[ XYZ ] Projects Data-loading in Progress...')
     return Project.create({
-      name: "Asset Management",
-      description: "inventory and location of all computer equipment",
+      name: "Drone flights",
+      description: "Web site to publish the drone flight route upon landing",
       skillsRequired: ["HTML", "JavaScript"],
-      dateStart: "2016-11-21",
+      dateStart: "2016-12-01",
       dateEnd: "",
       memberList: [aList1, aList2, aList3],
-      baseLocation: "Osaka",
+      baseLocation: "Chile",
     });
   })
   .then(function(){
     return Project.create({
-      name: "Video Store",
-      description: "inventory and sales of video games",
+      name: "Auto Tracker",
+      description: "Web site to track the vehicle GPS positioning on demand",
       skillsRequired: ["HTML", "JavaScript"],
       dateStart: "2016-12-21",
       dateEnd: "",
@@ -75,8 +75,8 @@ router.get('/reset', function(req, res){
   })
   .then(function(){
     return Project.create({
-      name: "Blood Bank",
-      description: "inventory of Blood Types",
+      name: "Team Up Site",
+      description: "web repository of resources inmediately available to engage in web dev projects",
       skillsRequired: ["HTML", "JavaScript", "jQuery"],
       dateStart: "2017-01-21",
       dateEnd: "",
@@ -87,7 +87,7 @@ router.get('/reset', function(req, res){
   .then(function(){
     return Project.create({
       name: "Health briefcase",
-      description: "Personal Health History",
+      description: "Secured web site with personal emergency health information",
       skillsRequired: ["Angular", "Phyton", "jQuery"],
       dateStart: "2017-02-21",
       dateEnd: "",

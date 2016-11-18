@@ -1,3 +1,5 @@
+// Not in Use - to be implemented later
+
 var mongoose      = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 mongoose.Promise = global.Promise;  // Do I need this?

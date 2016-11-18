@@ -48,6 +48,8 @@
       })
       .then(function(response){
         console.log("apiRESPONSE-projectEdit", response.data);
+        response.data.dateStart = new Date(response.data.dateStart);
+        if (response.data.dateEnd) {response.data.dateEnd = new Date(response.data.dateEnd)}
         self.oneProject = response.data;
         self.oneIndex = i;
         $state.go('edit');
