@@ -144,6 +144,7 @@
       self.innerIndex = j;
       self.oneProject = self.projectList[i];
       self.oneMember = self.projectList[i].memberList[j];
+      self.partialTitle = "Member Edit";
       $state.go('memberedit');
     }
 

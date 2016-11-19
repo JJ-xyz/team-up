@@ -1,8 +1,10 @@
-<div class="x-entry">
+<div class="container">
+  <h3 class="right-align teal-text text-lighten-2">New Member Detail</h3>
   <h4>Project {{api.oneProject.name}}</h4>
-  <h3>Member Detail</h3>
+  <h5>{{api.oneProject.description}}</h5>
 
-  <form ng-submit="api.memberAdd(api.oneMember)">
+
+  <form class="card-panel hoverable" ng-submit="api.memberAdd(api.oneMember)">
 
     <div>
       <label for="name">Name</label>

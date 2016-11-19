@@ -1,4 +1,4 @@
-<div class="x-entry">
+<div class="container">
   <h4>Edit Details</h4>
 
   <form ng-submit="api.projectUpdate(api.oneProject)">
@@ -10,7 +10,7 @@
 
     <div>
       <label for="description">description</label>
-      <input type="textarea" ng-model="api.oneProject.description" required>
+      <textarea class="materialize-textarea" type="text" ng-model="api.oneProject.description" required></textarea>
     </div>
 
     <div>
