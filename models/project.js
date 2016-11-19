@@ -9,7 +9,7 @@ var ObjectId = Schema.ObjectId;
 var ProjectSchema = new Schema({
   name: String,
   description: String,
-  skillsRequired: [String],
+  skillsRequired: String,
   dateStart: Date,
   dateEnd: Date,
   memberList: [MemberSchema],
