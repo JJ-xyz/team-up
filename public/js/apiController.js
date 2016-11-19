@@ -7,6 +7,7 @@
 
 		var self = this;
 
+    // --- public functions ---
     self.getAllProjects = getAllProjects;
     self.projectEdit = projectEdit;
     self.projectUpdate = projectUpdate;
@@ -33,7 +34,6 @@
       })
       .then(function(response){
         self.projectList = response.data;
-        console.log("apiRESPONSE-getAllProjects", response.data);
       })
       .catch((err) => { console.log(err) });
     }
@@ -47,7 +47,6 @@
         responseType: 'json'
       })
       .then(function(response){
-        console.log("apiRESPONSE-projectEdit", response.data);
         response.data.dateStart = new Date(response.data.dateStart);
         if (response.data.dateEnd) {response.data.dateEnd = new Date(response.data.dateEnd)}
         self.oneProject = response.data;
@@ -59,7 +58,6 @@
 
     // --- project Update
     function projectUpdate(oneProject){
-      console.log("apiARGUMENT-projectUpdate", oneProject);
       $http({
         method: 'PUT',
         url: `projects/${self.projectList[self.oneIndex]._id}`,
@@ -67,12 +65,6 @@
         responseType: 'json'
       })
       .then(function(response){
-        console.log("apiRESPONSE-projectUpdate", response.data);
-        //oneProject.dateStart = oneProject.dateStart;
-        //oneProject.dateEnd = oneProject.dateEnd;
-
-        //self.oneProject = response.data;
-        //self.projectList[self.oneIndex] = response.data;
         self.projectList[self.oneIndex] = response.data;
         $state.go('home');
       })
@@ -87,7 +79,6 @@
 
     // --- project Create
     function projectCreate(oneProject){
-      console.log("apiARGUMENT-projectNew", oneProject);
       $http({
         method: 'POST',
         url: `projects/`,
@@ -95,9 +86,6 @@
         responseType: 'json'
       })
       .then(function(response){
-        console.log("apiRESPONSE-projectNew", response.data);
-        //self.oneProject = response.data;
-        //self.projectList[self.oneIndex] = response.data;
         self.projectList.push(response.data);
         $state.go('home');
       })
@@ -106,7 +94,6 @@
 
     // --- project delete
     function projectDelete(i){
-      console.log("apiARGUMENT-projectDelete", self.projectList[i]._id);
       $http({
         method: 'DELETE',
         url: `projects/${self.projectList[i]._id}`,
@@ -114,8 +101,6 @@
         responseType: 'json'
       })
       .then(function(response){
-        console.log("apiRESPONSE-projectDelete", response.data);
-
         self.projectList.splice(i,1)
         $state.go('home');
       })
@@ -124,7 +109,6 @@
 
     // --- member ADD
     function memberNew(i){
-      console.log("apiARGUMENT-memberNew", self.projectList[i]);
       self.oneIndex = i;
       self.oneProject = self.projectList[i];
       self.oneMember = '';
@@ -133,16 +117,13 @@
 
     // --- project Update + member ADD
     function memberAdd(oneMember){
-      console.log("apiARGUMENT-memberAdd", oneMember);
       self.projectList[self.oneIndex].memberList.push(oneMember);
-      console.log("------------------for", self.projectList[self.oneIndex]);
       projectUpdate(self.projectList[self.oneIndex]);
       $state.go('home');
     }
 
     // --- member EDIT
     function memberEdit(i,j){
-      console.log("apiARGUMENT-memberEdit", self.projectList[i]);
       self.oneIndex = i;
       self.innerIndex = j;
       self.oneProject = self.projectList[i];
@@ -153,24 +134,17 @@
 
     // --- project Update + member EDIT
     function memberUpdate(oneMember){
-      console.log("apiARGUMENT-memberUpdate", oneMember);
       self.projectList[self.oneIndex].memberList[self.innerIndex] = oneMember;
-      console.log("------------------for", self.projectList[self.oneIndex]);
       projectUpdate(self.projectList[self.oneIndex]);
       $state.go('home');
     }
     // --- project Update + member DELETE
     function memberDelete(i,j){
-      console.log("apiARGUMENT-memberDelete", self.projectList[i].memberList[j]);
-      console.log("apiARGUMENT----------for", self.projectList[i]);
       self.projectList[i].memberList.splice(j,1);
       self.oneIndex = i;
-      console.log("-------------------as", self.projectList[j]);
       projectUpdate(self.projectList[i]);
       $state.go('home');
     }
-
-
 
   }
 

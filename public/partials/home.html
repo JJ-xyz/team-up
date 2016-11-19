@@ -1,25 +1,15 @@
 <div class="container">
   <h3 class="right-align teal-text text-lighten-2">Projects List</h3>
-
   <ul>
-    <!-- <span> _______ ID | Complete? | TASK  | ASSIGNED TO | DESCRIPTION  | ASSIGNED BY | DUE DATE | COMPLETED ON | </span> -->
     <li class="card-panel hoverable" ng-repeat="p in api.projectList track by $index" >
       <div ng-click="api.projectEdit($index)">
-        <!-- <span class="blue-text text-darken-2"> P{{$index}} | {{p._id}} | {{p.name}} | {{ p.description }} | {{p.skillsRequired.join}} | {{ p.dateStart.slice(0,10)}} | {{p.dateEnd.slice(0,10)}} | {{p.baseLocation}}</span> -->
-          <h4>Project: {{p.name}}
-          <!-- <button class="btn-fix btn-large waves-effect waves-light red lighten-2" ng-click="api.projectDelete($index)">Delete</button> -->
-          </h4>
+          <h4>Project: {{p.name}}</h4>
           <div class="divider"></div>
           <blockquote class="blue-grey-text text-darken-1">{{ p.description }}.  Project will start on {{p.dateStart.slice(0,10)}}</blockquote>
-
           <div class="collection">
             <p class="collection-item">Required skills: <b>{{p.skillsRequired}}</b></p>
             <p class="collection-item">Base location in <b>{{p.baseLocation}}</b></p>
           </div>
-
-          <!-- <blockquote>Required skills: {{p.skillsRequired}}</blockquote>
-          <blockquote>Base location in {{p.baseLocation}}</blockquote> -->
-
       </div>
 
       <table class="highlight">
@@ -44,20 +34,10 @@
       </table>
 
       <div class="">
-      <button class="waves-effect waves-light btn" ng-click="api.memberNew($index)">new member</button>
-      <button class="btn-fix btn waves-effect waves-light red lighten-2 right" ng-click="api.projectDelete($index)">delete project</button>
-    </div>
-
-
-      <!-- <div ng-repeat="who in p.memberList track by $index">
-        <button class="x-btn x-btn-add" ng-click="api.memberDelete($parent.$index,$index)">remove</button>
-        <span ng-click="api.memberEdit($parent.$index, $index)"> ------- {{$index}} of {{$parent.$index}} | [{{who.name}}] email:{{who.emailContact}} from {{who.location}}<span>
+        <button class="waves-effect waves-light btn" ng-click="api.memberNew($index)">new member</button>
+        <button class="btn-fix btn waves-effect waves-light red lighten-2 right" ng-click="api.projectDelete($index)">delete project</button>
       </div>
-      <button class="x-btn x-btn-add" ng-click="api.memberNew($index)">new member</button> -->
-
-
     </li>
     <button class="waves-effect waves-light btn" ng-click="api.projectNew()">new project</button>
   </ul>
-
 </div>
