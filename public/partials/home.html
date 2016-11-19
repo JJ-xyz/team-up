@@ -26,8 +26,8 @@
         <thead>
           <tr>
               <th data-field="option">Option</th>
-              <th data-field="element">pos</th>
               <th data-field="name">Member Name</th>
+              <th data-field="skills">Skill Set</th>
               <th data-field="email">e-Mail</th>
               <th data-field="location">Work Place</th>
           </tr>
@@ -35,8 +35,8 @@
         <tbody ng-repeat="who in p.memberList track by $index">
           <tr ng-click="api.memberEdit($parent.$index, $index)">
             <td><button class="btn-floating btn-small waves-effect waves-light red lighten-2" ng-click="api.memberDelete($parent.$index,$index)">--</button></td>
-            <td>{{$index}} of {{$parent.$index}}</td>
             <td>{{who.name}}</td>
+            <td>{{who.skillSet}}</td>
             <td>{{who.emailContact}}</td>
             <td>{{who.location}}</td>
           </tr>
