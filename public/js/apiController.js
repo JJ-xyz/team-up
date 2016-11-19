@@ -68,9 +68,12 @@
       })
       .then(function(response){
         console.log("apiRESPONSE-projectUpdate", response.data);
+        //oneProject.dateStart = oneProject.dateStart;
+        //oneProject.dateEnd = oneProject.dateEnd;
+
         //self.oneProject = response.data;
         //self.projectList[self.oneIndex] = response.data;
-        self.projectList[self.oneIndex] = oneProject;
+        self.projectList[self.oneIndex] = response.data;
         $state.go('home');
       })
       .catch((err) => { console.log(err) });
